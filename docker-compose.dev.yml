@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile-appserver-dev
       context: docker      
     image: mpasternak79/bpp-on-docker-appserver:dev
+    entrypoint: /bin/bash
 
   celery:
     build:

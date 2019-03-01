@@ -21,6 +21,8 @@ services:
     depends_on:
       - db
       - rabbitmq
+    volumes:
+      - build_cache:/home/circleci/.cache
 
   celery:
     env_file: appserver.env
@@ -41,3 +43,4 @@ services:
       
 volumes:
   psql_db:
+  build_cache:
