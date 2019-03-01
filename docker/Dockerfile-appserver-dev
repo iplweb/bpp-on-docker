@@ -10,6 +10,7 @@ RUN grunt build
 RUN yarn install --prod
 RUN pipenv run python src/manage.py collectstatic --noinput -v0 --traceback
 RUN pipenv run python src/manage.py compress --force -v0 --traceback
+RUN make requirements
 RUN pipenv run python setup.py bdist_wheel
 
 FROM python:3.6
