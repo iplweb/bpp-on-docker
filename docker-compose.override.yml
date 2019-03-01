@@ -1,0 +1,13 @@
+version: '2'
+services:
+  appserver:
+    build:
+      dockerfile: Dockerfile-appserver-1.0.26
+      context: docker      
+    image: mpasternak79/bpp-on-docker-appserver:1.0.26
+
+  celery:
+    build:
+      dockerfile: Dockerfile-appserver-1.0.26
+      context: docker      
+    image: mpasternak79/bpp-on-docker-appserver:1.0.26

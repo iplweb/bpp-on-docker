@@ -1,0 +1,51 @@
+version: '2'
+services:
+
+  rabbitmq: 
+    image: rabbitmq
+
+  memcached:
+    image: memcached:latest
+      
+  db:
+    build:
+      dockerfile: Dockerfile-db
+      context: docker
+    image: mpasternak79/bpp-on-docker-db:10
+    volumes:
+      - psql_db:/var/lib/postgresql/data
+
+  appserver:
+    build:
+      dockerfile: Dockerfile-appserver
+      context: docker      
+    image: mpasternak79/bpp-on-docker-appserver:1.0.26
+    env_file: appserver.env
+    entrypoint: bash -c "bpp-manage.py migrate && bpp-manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db
+      - rabbitmq
+
+  celery:
+    build:
+      dockerfile: Dockerfile-appserver
+      context: docker      
+    image: mpasternak79/bpp-on-docker-appserver:1.0.26
+    env_file: appserver.env
+    entrypoint: celery worker -A django_bpp.celery_tasks -c 1
+    depends_on:
+      - appserver
+        
+  webserver:
+    build:
+      dockerfile: Dockerfile-webserver
+      context: docker      
+    image: mpasternak79/bpp-on-docker-webserver:1.14.1
+    depends_on:
+      - appserver
+      - celery
+    ports:
+      - 8080:80
+      
+volumes:
+  psql_db:
