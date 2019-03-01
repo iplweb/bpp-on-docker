@@ -65,6 +65,10 @@ server {
 
     server_name _;
 
+    location /static {
+        alias /var/www/html/staticroot;
+    }
+
     location / {
         try_files $uri @proxy_to_app;
     }

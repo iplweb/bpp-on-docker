@@ -18,17 +18,19 @@ services:
   appserver:
     env_file: appserver.env
     entrypoint: bash -c "bpp-manage.py migrate && bpp-manage.py runserver 0.0.0.0:8000"
+    # entrypoint: /bin/bash
     depends_on:
       - db
       - rabbitmq
     volumes:
-      - build_cache:/home/circleci/.cache
+      - staticroot:/usr/local/lib/python3.6/site-packages/django_bpp/staticroot/
 
   celery:
     env_file: appserver.env
     entrypoint: celery worker -A django_bpp.celery_tasks -c 1
     depends_on:
-      - appserver
+      - db
+      - rabbitmq
         
   webserver:
     build:
@@ -40,7 +42,12 @@ services:
       - celery
     ports:
       - 8080:80
+    volumes:
+      - staticroot:/var/www/html/staticroot
+        
       
 volumes:
   psql_db:
   build_cache:
+  staticroot:
+    
