@@ -14,10 +14,9 @@ services:
     image: mpasternak79/bpp-on-docker-db:10
     volumes:
       - psql_db:/var/lib/postgresql/data
-
   appserver:
     env_file: appserver.env
-    entrypoint: bash -c "bpp-manage.py migrate && bpp-manage.py runserver 0.0.0.0:8000"
+    entrypoint: bash -c "bpp-manage.py migrate && uwsgi --master --processes 2 --optimize 2 --socket 0.0.0.0:8000 --module django_bpp.wsgi"
     # entrypoint: /bin/bash
     depends_on:
       - db
