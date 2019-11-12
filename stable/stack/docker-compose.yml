@@ -1,0 +1,43 @@
+version: '2'
+services:
+
+  rabbitmq: 
+    image: rabbitmq
+
+  memcached:
+    image: memcached:latest
+      
+  db:
+    image: mpasternak79/postgres:12
+    volumes:
+      - psql_db:/var/lib/postgresql/data
+
+  appserver:
+    image: mpasternak79/bpp-appserver:stable
+    env_file: appserver.env
+    depends_on:
+      - db
+      - rabbitmq
+      - memcached
+    volumes:
+      - staticroot:/staticroot
+
+  celery:
+    image: mpasternak79/bpp-celery:stable
+    env_file: appserver.env
+    depends_on:
+      - appserver
+        
+  webserver:
+    image: mpasternak79/bpp-webserver:latest
+    depends_on:
+      - appserver
+      - celery
+    ports:
+      - 8080:80
+    volumes:
+      - staticroot:/var/www/html/staticroot
+      
+volumes:
+  psql_db:
+  staticroot:

@@ -1,0 +1,6 @@
+FROM mpasternak79/bpp-base:stable
+RUN apt update && apt install -y -q postgresql-client
+EXPOSE 8080
+ADD entrypoint-appserver.sh / 
+RUN chmod +x entrypoint-appserver.sh
+ENTRYPOINT /entrypoint-appserver.sh
