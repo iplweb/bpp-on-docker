@@ -1,0 +1,5 @@
+FROM mpasternak79/bpp-base:unstable
+
+ADD entrypoint-celery.sh /
+RUN chmod +x entrypoint-celery.sh
+ENTRYPOINT /entrypoint-celery.sh

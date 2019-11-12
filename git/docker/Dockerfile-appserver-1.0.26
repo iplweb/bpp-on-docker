@@ -1,2 +1,0 @@
-FROM python:3.6
-RUN pip install bpp-iplweb==1.0.26
