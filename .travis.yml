@@ -14,7 +14,7 @@ script:
   - cd stack
   - docker-compose pull
   - docker-compose up -d
-  - sleep 10
+  - sleep 20
   - docker-compose exec appserver bpp-manage.py createsuperuser --username admin --noinput --email michal.dtz@gmail.com
   - docker-compose stop
   - cd ..
