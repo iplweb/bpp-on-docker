@@ -3,3 +3,4 @@ build:
 
 push:
 	docker push mpasternak79/bpp-webserver:1.14.1.0.0.1
+	docker push mpasternak79/bpp-webserver:latest

@@ -9,5 +9,8 @@ build:
 
 push:
 	docker push mpasternak79/bpp-base:$(BPP_VERSION)
+	docker push mpasternak79/bpp-base:stable
 	docker push mpasternak79/bpp-celery:$(BPP_VERSION)
-	docker push mpasternak79/bpp-appserver:$(BPP_VERSION) 
+	docker push mpasternak79/bpp-celery:stable
+	docker push mpasternak79/bpp-appserver:$(BPP_VERSION)
+	docker push mpasternak79/bpp-appserver:stable

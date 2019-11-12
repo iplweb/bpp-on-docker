@@ -3,3 +3,4 @@ build:
 
 push:
 	docker push mpasternak79/postgres:12
+	docker push mpasternak79/postgres:latest
