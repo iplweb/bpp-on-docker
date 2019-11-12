@@ -3,9 +3,13 @@ services:
 
 script:
   # Sprawdź, czy obrazy da się zbudować:
-  - cd stable/containers && make build
+  - cd stable/containers
+  - make build
+  - cd ..
   
   # Sprawdź, czy docker-compose wystartuje
-  - cd stable/stack && docker-compose pull
-  - cd stable/stack && docker-compose up -d
-  - cd stable/stack && docker-compose exec appserver bpp-manage.py createsuperuser --username admin --noinput --email michal.dtz@gmail.com
+  - cd stable/stack
+  - docker-compose pull
+  - docker-compose up -d
+  - sleep 10
+  - docker-compose exec appserver bpp-manage.py createsuperuser --username admin --noinput --email michal.dtz@gmail.com
