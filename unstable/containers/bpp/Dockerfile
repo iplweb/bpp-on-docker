@@ -12,6 +12,6 @@ FROM python:3.7
 COPY --from=0 /home/circleci/bpp/dist/bpp_iplweb-*-none-any.whl /
 RUN pip install /*whl
 EXPOSE 8080
-ADD entrypoint-uwsgi.sh /
-RUN chmod +x entrypoint-uwsgi.sh
-ENTRYPOINT /entrypoint-uwsgi.sh
+ADD entrypoint-appserver.sh /
+RUN chmod +x entrypoint-appserver.sh
+ENTRYPOINT /entrypoint-appserver.sh
