@@ -2,5 +2,5 @@ services:
   - docker
 
 script:
-  make build-stable
-  make build-unstable
+  - make build-stable
+  - make build-unstable
