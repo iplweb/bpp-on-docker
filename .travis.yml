@@ -2,24 +2,5 @@ services:
   - docker
 
 script:
-  # Stable
-  - cd stable
-  
-  # Sprawdź, czy obrazy da się zbudować:
-  - cd containers
-  - make build
-  - cd ..
-  
-  # Sprawdź, czy docker-compose wystartuje
-  - cd stack
-  - docker-compose pull
-  - docker-compose up -d
-  - sleep 120
-  - docker-compose exec appserver bpp-manage.py createsuperuser --username admin --noinput --email michal.dtz@gmail.com
-  - docker-compose stop
-  - cd ..
-
-  # Unstable
-  - cd ../unstable
-  - make build
-  
+  make build-stable
+  make build-unstable

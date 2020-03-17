@@ -5,7 +5,7 @@ ARG CACHEBUST=1
 RUN git clone https://github.com/iplweb/bpp/
 WORKDIR bpp
 RUN sudo npm install -g grunt-cli
-RUN sudo pipenv install --system
+RUN sudo pip install -r requirements.txt -r requirements_dev.txt
 RUN make bdist_wheel
 
 FROM python:3.7
