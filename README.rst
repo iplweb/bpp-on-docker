@@ -3,8 +3,8 @@ bpp-on-docker
 
 Pliki Dockera i skrpyty Makefile ułatwiające tworzenie obrazów oprogramowania BPP i pomocniczych.
 
-.. img: https://travis-ci.org/iplweb/bpp-on-docker.svg?branch=master
-   target: https://travis-ci.org/iplweb/bpp-on-docker/
+.. image:: https://travis-ci.org/iplweb/bpp-on-docker.svg?branch=master
+   :target: https://travis-ci.org/iplweb/bpp-on-docker/
 
 Budowa:
 ```
