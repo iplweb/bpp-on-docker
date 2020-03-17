@@ -11,6 +11,9 @@ services:
     image: mpasternak79/postgres:12
     volumes:
       - psql_db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: bpp
 
   appserver:
     image: mpasternak79/bpp-appserver:stable
