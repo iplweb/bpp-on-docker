@@ -5,8 +5,7 @@ clean:
 build-stable:
 	cd stable/containers && make build
 	cd stable/stack && docker-compose up -d
-	sleep 5
-	cd stable/stack && docker-compose exec appserver bpp-manage.py migrate
+	sleep 60
 	cd stable/stack && docker-compose exec appserver bpp-manage.py createsuperuser --username admin --noinput --email michal.dtz@gmail.com
 	cd stable/stack && docker-compose stop
 
