@@ -11,3 +11,6 @@ build-stable:
 
 build-unstable:
 	cd unstable && make build
+
+run-stable:
+	cd stable/stack && docker-compose up

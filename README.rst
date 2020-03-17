@@ -1,4 +1,6 @@
-# bpp-on-docker
+bpp-on-docker
+-------------
+
 Pliki Dockera i skrpyty Makefile ułatwiające tworzenie obrazów oprogramowania BPP i pomocniczych.
 
 .. img: https://travis-ci.org/iplweb/bpp-on-docker.svg?branch=master
@@ -6,12 +8,12 @@ Pliki Dockera i skrpyty Makefile ułatwiające tworzenie obrazów oprogramowania
 
 Budowa:
 ```
-	$ cd stable/containers && make
+	$ make build-stable
 ```
 
 Uruchamianie: 
 ```
-	$ cd stable/stack && docker-compose up
+	$ make run-stable
 ```
 
 Po zakończeniu uruchamiania się appservera (przy pierwszej próbie może to nieco
