@@ -1,4 +1,4 @@
-BPP_VERSION=201911.11
+BPP_VERSION=$(shell python3 pkgversion.py bpp-iplweb|head -1)
 
 build:
 	docker build -f Dockerfile . -t mpasternak79/bpp-base:$(BPP_VERSION) -t mpasternak79/bpp-base:stable
