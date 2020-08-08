@@ -7,7 +7,6 @@ build-stable:
 	cd stable/stack && docker-compose up -d
 	echo "Waiting 2 minutes for migrations to complete..."
 	sleep 120
-	cd stable/stack && docker-compose exec appserver bpp-manage.py createsuperuser --username admin --noinput --email michal.dtz@gmail.com
 	cd stable/stack && docker-compose stop
 
 build-unstable:
