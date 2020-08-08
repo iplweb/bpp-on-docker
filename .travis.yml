@@ -1,6 +1,9 @@
 services:
   - docker
 
+env:
+  - TARGET=build-stable
+  - TARGET=build-unstable
+
 script:
-  - make build-stable
-  - make build-unstable
+  - make $TARGET
