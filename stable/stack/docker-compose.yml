@@ -1,9 +1,6 @@
 version: '2'
 services:
 
-  rabbitmq: 
-    image: rabbitmq
-
   memcached:
     image: memcached:latest
       
@@ -20,7 +17,6 @@ services:
     env_file: appserver.env
     depends_on:
       - db
-      - rabbitmq
       - memcached
     volumes:
       - staticroot:/staticroot
