@@ -1,6 +1,9 @@
 version: '2'
 services:
 
+  redis:
+    image: redis:latest
+
   db:
     image: mpasternak79/postgres:12
     volumes:
