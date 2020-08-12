@@ -7,7 +7,10 @@ from pkg_resources import parse_version
 
 def versions(pkg_name):
     url = 'https://pypi.python.org/pypi/%s/json' % pkg_name
-    releases = json.loads(request.urlopen(url).read())['releases']
+    data = request.urlopen(url).read()
+    if hasattr(data, "decode"):
+        data = data.decode("utf-8")
+    releases = json.loads(data)['releases']
     return sorted(releases, key=parse_version, reverse=True)    
 
 if __name__ == '__main__':
