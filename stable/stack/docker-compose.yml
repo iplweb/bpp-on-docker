@@ -1,9 +1,6 @@
 version: '2'
 services:
 
-  memcached:
-    image: memcached:latest
-      
   db:
     image: mpasternak79/postgres:12
     volumes:
@@ -17,7 +14,6 @@ services:
     env_file: appserver.env
     depends_on:
       - db
-      - memcached
     volumes:
       - staticroot:/staticroot
 
