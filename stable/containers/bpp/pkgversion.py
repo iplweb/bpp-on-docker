@@ -6,7 +6,7 @@ from urllib import request
 from pkg_resources import parse_version    
 
 def versions(pkg_name):
-    url = f'https://pypi.python.org/pypi/{pkg_name}/json'
+    url = 'https://pypi.python.org/pypi/%s/json' % pkg_name
     releases = json.loads(request.urlopen(url).read())['releases']
     return sorted(releases, key=parse_version, reverse=True)    
 
