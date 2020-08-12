@@ -3,7 +3,7 @@ clean:
 	find . -name \*~ -print0 | xargs -0 rm -v
 
 check-server-working-stable:
-	cd stable/stack && if [ "`curl 127.0.0.1:8080|grep uczelni|wc -l`" != "       1" ]; then ( docker-compose logs --tail="all"; curl 127.0.0.1:8080; exit 1); fi
+	cd stable/stack && if [ "`curl 127.0.0.1:8080|grep 'W systemie nie ma'|wc -l|sed -e 's/ //g'`" != "1" ]; then ( docker-compose logs --tail="all"; curl 127.0.0.1:8080; exit 1); fi
 
 build-stable-container:
 	cd stable/containers && make build
@@ -22,7 +22,7 @@ build-unstable-container:
 	cd unstable && make build
 
 check-server-working-unstable:
-	cd unstable/stack && if [ "`curl 127.0.0.1:8080|grep uczelni|wc -l`" != "       1" ]; then ( docker-compose logs --tail="all"; curl 127.0.0.1:8080; exit 1); fi
+	cd unstable/stack && if [ "`curl 127.0.0.1:8080|grep 'W systemie nie ma'|wc -l|sed -e 's/ //g'`" != "1" ]; then ( docker-compose logs --tail="all"; curl 127.0.0.1:8080; exit 1); fi
 
 run-unstable-container: build-unstable-container
 	cd unstable/stack && docker-compose up -d
