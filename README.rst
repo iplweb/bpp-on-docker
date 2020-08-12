@@ -4,7 +4,7 @@ bpp-on-docker
 .. image:: https://travis-ci.org/iplweb/bpp-on-docker.svg?branch=master
    :target: https://travis-ci.org/iplweb/bpp-on-docker/
 
-Pliki Dockera i skrypty ``Makefile`` ułatwiające tworzenie obrazów oprogramowania BPP i pomocniczych.
+Pliki Dockera_ i skrypty ``Makefile`` ułatwiające tworzenie obrazów `oprogramowania BPP`_ i pomocniczych.
 
 Plik ``Makefile`` definiuje następujace rodzaje celów:
 
@@ -24,3 +24,6 @@ migrację bazy danych i uruchomi serwer aplikacji nasłuchujący pod adresem
 http://127.0.0.1:8080/
 
 Domyślny login do systemu to tradycyjnie admin/admin .
+
+.. _oprogramowania BPP: http://bpp.iplweb.pl/
+.. _Dockera: http://docker.com/
